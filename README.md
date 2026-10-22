@@ -124,8 +124,12 @@ that option clicks **Allow once**, never a permanent grant.
 Use **Activity** for safe local diagnostics and **Settings → Run doctor** for end-to-end health.
 Settings can also cancel a retained browser turn or remove the Codex integration before uninstall.
 **Save chats in ChatGPT** keeps task conversations in ChatGPT history. On by default for new setups;
-independent of **New browser chat for each turn**. Existing explicit choices are preserved when
+independent of **Continue in the same ChatGPT conversation**. Existing explicit choices are preserved when
 updating. Turn it off to use Temporary Chat, where ChatGPT may not expose your connector.
+**Continue in the same ChatGPT conversation** is on by default in Automatic mode. Follow-up turns
+send only new context while the retained chat is available. At the context limit, Codex compacts
+the task, hands off its summary, and starts the next context epoch in a new ChatGPT chat. Turn the
+setting off to rebuild the full Codex context in a new browser chat for every turn.
 Set `CODEX_CHATGPT_WEB_BROWSER_DIAGNOSTICS=1` only when every browser checkpoint needs a screenshot.
 
 New installs use **Compatibility V1** for cross-backend subagents. **Native** preserves Codex's own

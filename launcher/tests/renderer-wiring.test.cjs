@@ -694,11 +694,12 @@ test("browser preference controls are translated, disabled in Zero Risk, and inv
         assert.ok(row);
         assert.equal(row.props.body, mode === "manual" ? copy[unavailable] : copy[body]);
         const control = visit(row).find(node => node.type === "Switch");
-        assert.equal(control.props.checked, property === "autoApproveToolCalls" && mode === "manual" ? false : enabled);
+        assert.equal(control.props.checked, property === "experimentalFreshConversationPerTurn"
+          ? !enabled : property === "autoApproveToolCalls" && mode === "manual" ? false : enabled);
         assert.equal(control.props.disabled, mode === "manual" || !configured
           || (property === "experimentalBiggerContext" && !available && !enabled));
         if (!control.props.disabled) {
-          control.props.onChange(!enabled);
+          control.props.onChange(property === "experimentalFreshConversationPerTurn" ? enabled : !enabled);
           await new Promise(resolve => setImmediate(resolve));
           assert.equal(invocation, !enabled);
           assert.equal(saved[property], !enabled);

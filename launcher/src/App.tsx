@@ -1956,9 +1956,9 @@ function SettingsSurface({
         <SettingRow body={snapshot.state.browserInteractionMode === "manual"
           ? copy.manualFreshConversationUnavailable : copy.freshConversationBody} label={copy.freshConversation}>
           <Switch
-            checked={snapshot.state.experimentalFreshConversationPerTurn}
+            checked={!snapshot.state.experimentalFreshConversationPerTurn}
             disabled={busy || snapshot.state.browserInteractionMode === "manual" || snapshot.state.coreSetupComplete !== true}
-            onChange={(checked) => void setFreshConversationPerTurn(checked)}
+            onChange={(checked) => void setFreshConversationPerTurn(!checked)}
           />
         </SettingRow>
         <SettingRow body={snapshot.state.browserInteractionMode === "manual"
